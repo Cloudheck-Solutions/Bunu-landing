@@ -263,3 +263,75 @@ header .header-links a:hover{
     font-weight: 500;
     line-height: normal;
 }
+
+.landing-wrapper .app-info{
+    padding: 100px 90px;
+    /* height: 100%; */
+
+}
+
+.landing-wrapper .app-info .title{
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 73px;
+}
+
+.landing-wrapper .app-info .app-info-content-wrapper{
+    position: relative;
+    border-radius: 20px;
+    background: #00F;
+    padding: 106px 48px;
+    width: 100%;
+    /* height: 100%; */
+}
+
+.landing-wrapper .app-info .app-info-content-wrapper .app-info-details{
+    width: 60%;
+    margin-right: 20p;
+}
+
+.landing-wrapper .app-info .app-info-content-wrapper .app-info-details .detail-header{
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 18px;
+}
+
+.landing-wrapper .app-info .app-info-content-wrapper .app-info-details .detail-body{
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 24px;
+}
+
+.landing-wrapper .app-info .app-info-content-wrapper .app-info-details a{
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: underline;
+}
+
+.landing-wrapper .app-info .app-info-content-wrapper .demo-image-wrapper{
+    position: relative;
+    right: 0;
+    bottom: 0;
+}
+
+.landing-wrapper .app-info .app-info-content-wrapper .demo-image-wrapper{
+    position: absolute;
+    top: 0;
+}

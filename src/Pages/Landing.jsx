@@ -103,6 +103,19 @@ const Landing = () => {
             <div className="info-item-body">Call us anytime and request for help with our 24/7 support at +234 90 593 2342 423.</div>
           </div>
         </div>
+        <div className="app-info">
+          <div className="title">It’s easier with our app</div>
+          <div className="app-info-content-wrapper">
+            <div className="app-info-details">
+              <div className="detail-header">Request for artisans, for <br/> quality work.</div>
+              <div className="detail-body">Scan the Qr code with your phone camera to download the Bunu app. Available for Android and IOS devices.</div>
+              <a href="/#">Click here to download</a>
+            </div>
+            <div className="demo-image-wrapper">
+              <img src='assets/images/phone.png' alt='bunu app demo' />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

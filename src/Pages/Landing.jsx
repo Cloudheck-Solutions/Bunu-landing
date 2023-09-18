@@ -20,7 +20,8 @@ const Landing = () => {
                 <Button>Download the app</Button>
             </div>
         </div>
-        <div className="content-section">
+      </div>
+      <div className="content-section">
           <div className="title">Earn money with Bunu</div>
           <div className="content-btn">
             <Button className="active">Artisan</Button>
@@ -117,8 +118,57 @@ const Landing = () => {
             </div>
           </div>
         </div>
+        <div className="pre-footer">
+          <div className="logo-social">
+            <div className="footer-logo">
+              <div className="footer-logo-image">
+                <img src='assets/images/logo2.png' alt='bunu' />
+              </div>
+              <div className="footer-logo-text">Bunu</div>
+            </div>
+            <div className="footer-social">
+              <a href="/#" className="footer-social-wrapper">
+                <Icon icon="ri:instagram-fill" /> 
+              </a>
+              <a href="/#" className="footer-social-wrapper">
+                <Icon icon="ri:linkedin-fill" /> 
+              </a>
+              <a href="/#" className="footer-social-wrapper">
+                <Icon icon="ri:whatsapp-fill" /> 
+              </a>
+              <a href="/#" className="footer-social-wrapper">
+                <Icon icon="bi:facebook" /> 
+              </a>
+              <a href="/#" className="footer-social-wrapper">
+                <Icon icon="uil:twitter" /> 
+              </a>
+            </div>
+          </div>
+          <div className="footer-links">
+            <div className="link-wrapper">
+              <div className="title">Quicklinks</div>
+              <a href="#/" className="footer-link">Home</a>
+              <a href="#/" className="footer-link">About Us</a>
+            </div>
+            <div className="link-wrapper">
+              <div className="title">Company</div>
+              <a href="#/" className="footer-link">Careers</a>
+              <a href="#/" className="footer-link">Newsroom</a>
+              <a href="#/" className="footer-link">Careers</a>
+              <a href="#/" className="footer-link">Newsroom</a>
+            </div>
+            <div className="link-wrapper">
+              <div className="title">Download</div>
+              <a href="#/" className="footer-link2">
+                <img src='assets/images/app-store.png' alt='Apple App store download' />
+              </a>
+              <a href="#/" className="footer-link2">
+                <img src='assets/images/play.png' alt='Google Play store download' />
+              </a>
+            </div>
+          </div>
+        </div>
         <Footer />
-      </div>
     </div>
   )
 }

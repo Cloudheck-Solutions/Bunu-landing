@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../Components/Header'
 import { Button } from 'react-bootstrap'
 import { Icon } from '@iconify/react'
+import Footer from '../Components/Footer'
 
 const Landing = () => {
   return (
@@ -116,6 +117,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   )

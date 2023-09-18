@@ -48,6 +48,22 @@ header .header-links a:hover{
     text-decoration: underline;
 }
 
+/* Footer */
+footer{
+    padding: 36px 90px;
+    background: #F0F0F0;
+    border-top: 1px solid #B0B0B0;
+}
+
+footer .footer-text{
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
 /* Landing Page */
 .landing-wrapper{
     width: 100%;

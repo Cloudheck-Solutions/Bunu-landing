@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../Components/Header'
 import { Button } from 'react-bootstrap'
+import { Icon } from '@iconify/react'
 
 const Landing = () => {
   return (
@@ -77,6 +78,29 @@ const Landing = () => {
               </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="info-section">
+          <div className="info-section-item">
+            <div className="info-item-header">
+              <div className="info-icon"> <Icon icon="formkit:people" /> </div>
+              <div className="title">About Us</div>
+            </div>
+            <div className="info-item-body">Find out how we started, what drives us, and how we're reimagining how the world moves.</div>
+          </div>
+          <div className="info-section-item">
+            <div className="info-item-header">
+              <div className="info-icon"> <Icon icon="iconamoon:news" /> </div>
+              <div className="title">Newsroom</div>
+            </div>
+            <div className="info-item-body">See announcements about our latest releases, initiatives, and partnerships.</div>
+          </div>
+          <div className="info-section-item">
+            <div className="info-item-header">
+              <div className="info-icon"> <Icon icon="mi:call" /> </div>
+              <div className="title">Call Us</div>
+            </div>
+            <div className="info-item-body">Call us anytime and request for help with our 24/7 support at +234 90 593 2342 423.</div>
           </div>
         </div>
       </div>

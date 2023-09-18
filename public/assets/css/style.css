@@ -207,3 +207,59 @@ header .header-links a:hover{
     font-weight: 400;
     line-height: normal;
 }
+
+.landing-wrapper .info-section {
+    padding: 55px 90px;
+    background: #EFEFEF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+}
+
+.landing-wrapper .info-section .info-section-item{
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+}
+
+.landing-wrapper .info-section .info-section-item .info-item-header{
+    margin-bottom: 24px;
+}
+
+.landing-wrapper .info-section .info-section-item .info-item-header .info-icon{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 13px;
+}
+
+.landing-wrapper .info-section .info-section-item .info-item-header .info-icon .iconify{
+    font-size: 39px;
+    color: #000;
+    text-align: center;
+}
+
+.landing-wrapper .info-section .info-section-item .info-item-header .title{
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.landing-wrapper .info-section .info-section-item .info-item-body{
+    color: #666;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

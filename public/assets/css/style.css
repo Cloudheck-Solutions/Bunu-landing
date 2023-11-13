@@ -8,9 +8,8 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: transparent;
-    background: linear-gradient(180deg, #000 -78.29%, rgba(0, 0, 0, 0.00) 100%);
-    padding: 35px 90px;
+    background-color: #FFFFFF;
+    padding: 10px 90px;
 }
 
 header .logo{
@@ -25,7 +24,7 @@ header .logo img{
 }
 
 header .logo .logo-text{
-    color: #FFF;
+    color: #252525;
     font-family: 'Inika';
     font-size: 50px;
     font-style: normal;
@@ -33,15 +32,22 @@ header .logo .logo-text{
     line-height: normal;  
 }
 
+header .header-links {
+    /* align-items: center;
+    justify-content: flex-end; */
+    padding-top: 20px;
+}
+
 header .header-links a{
     text-decoration: none;
-    color: #FFF;
+    color: #252525;
     font-family: 'Inter';
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     margin-left: 39px;
+    
 }
 
 header .header-links a:hover{
@@ -160,20 +166,33 @@ footer .footer-text{
 
 .landing-wrapper .hero-section{
     width: 100%;
-    /* height: 750px;     */
-    background: linear-gradient(0deg, rgba(37, 37, 37, 0.60) 0%, rgba(37, 37, 37, 0.60) 100%), url(../images/hero.png), lightgray 50% / cover no-repeat;
+    height: 750px;    
+    background: url(../images/bg1.png);
     background-size: cover;
     background-position: center;
 }
 
+.landing-wrapper .hero-section2{
+    width: 100%;
+    height: 750px;    
+    background: url(../images/bg2.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+}
+
 .landing-wrapper .hero-section .hero-content{
-    margin-top: 134px;
+    /* margin-top: 134px; */
+    padding-top: 140px;
+    align-items: center;
+    justify-content: center;
     padding-left: 90px;
     max-width: 590px;
 }
 
 .landing-wrapper .hero-section .hero-content .hero-content-title{
-    color: #FFF;
+    color: #252525;
     font-family: 'Poppins';
     font-size: 64px;
     font-style: normal;
@@ -183,7 +202,7 @@ footer .footer-text{
 }
 
 .landing-wrapper .hero-section .hero-content .hero-content-sub-title{
-    color: #FFF;
+    color: #252525;
     font-family: 'Poppins';
     font-size: 28px;
     font-style: normal;
@@ -210,6 +229,7 @@ footer .footer-text{
 .landing-wrapper .hero-section .hero-content .hero-content-download-btn .btn:hover{
     border: 1px solid #00F !important;
     background: transparent !important;
+    color: #00F !important;
 }
 
 .landing-wrapper .content-section{
@@ -274,6 +294,47 @@ footer .footer-text{
     font-weight: 700;
     line-height: normal;
     margin-bottom: 42px;
+}
+
+.landing-wrapper .content-section .content-body .content-body-text .contentAboutus{
+    margin-right: 100px;
+}
+
+.landing-wrapper .content-section .content-body .content-body-text .contentAboutus .contentAboutUsText{
+    color: #252525;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px; /* 142.857% */
+    margin-bottom: 76px;
+}
+
+.landing-wrapper .content-section .content-body .content-body-text .contentAboutus .abt-btn-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-wrapper .content-section .content-body .content-body-text .contentAboutus .abt-btn-section .abt-btn{
+    border-radius: 10px !important;
+    border: 3px solid #00F !important;
+    background: #00F !important;
+    color: #FFF !important;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 20px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: 40px !important; /* 200% */
+    padding: 20px 62px !important;
+}
+
+.landing-wrapper .content-section .content-body .content-body-text .contentAboutus .abt-btn-section .abt-btn:hover{
+    background: transparent !important;
+    color: #00F !important;
 }
 
 .landing-wrapper .content-section .content-body .content-body-text .content-body-text-list{

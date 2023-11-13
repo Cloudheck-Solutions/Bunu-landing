@@ -3,6 +3,7 @@ import Header from "../Components/Header";
 import { Button } from "react-bootstrap";
 import { Icon } from "@iconify/react";
 import Footer from "../Components/Footer";
+import BlogComponent from "../Components/BlogComponent";
 
 const Landing = () => {
   return (
@@ -100,6 +101,17 @@ const Landing = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="blog-section">
+        <div className="blog-header">Blogs</div>
+        <div className="articles">
+          <BlogComponent image={'assets/images/blog1.png'} title={'Best ways to make money using Bunu'}/>
+          <BlogComponent image={'assets/images/blog2.png'} title={'Best ways to make money using ....'}/>
+          <BlogComponent image={'assets/images/blog3.png'} title={'The new applicants on bunu app'}/>
+        </div>
+        <div className="blog-btn">
+          <Button className="blogbtn">View More</Button>
         </div>
       </div>
       <div className="info-section">

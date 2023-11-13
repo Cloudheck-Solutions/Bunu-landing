@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Components/Header";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Icon } from "@iconify/react";
 import Footer from "../Components/Footer";
 import BlogComponent from "../Components/BlogComponent";
@@ -106,12 +106,48 @@ const Landing = () => {
       <div className="blog-section">
         <div className="blog-header">Blogs</div>
         <div className="articles">
-          <BlogComponent image={'assets/images/blog1.png'} title={'Best ways to make money using Bunu'}/>
-          <BlogComponent image={'assets/images/blog2.png'} title={'Best ways to make money using ....'}/>
-          <BlogComponent image={'assets/images/blog3.png'} title={'The new applicants on bunu app'}/>
+          <BlogComponent
+            image={"assets/images/blog1.png"}
+            title={"Best ways to make money using Bunu"}
+          />
+          <BlogComponent
+            image={"assets/images/blog2.png"}
+            title={"Best ways to make money using ...."}
+          />
+          <BlogComponent
+            image={"assets/images/blog3.png"}
+            title={"The new applicants on bunu app"}
+          />
         </div>
         <div className="blog-btn">
           <Button className="blogbtn">View More</Button>
+        </div>
+      </div>
+      <div className="contact-section">
+        <div className="contact-header">Contact Us</div>
+        <div className="form-image-wrapper">
+          <div className="form-section">
+            <Form>
+              <Form.Group className="input-group-wrapper">
+                <Form.Control type="text" placeholder="Full Name" />
+              </Form.Group>
+              <Form.Group className="input-group-wrapper">
+                <Form.Control type="email" placeholder="Phone Number" />
+              </Form.Group>
+              <Form.Group className="input-group-wrapper">
+                <Form.Control type="email" placeholder="Email Address" />
+              </Form.Group>
+              <Form.Group className="input-group-wrapper">
+                <Form.Control as="textarea" rows={6} placeholder="Message" />
+              </Form.Group>
+              <Form.Group className="input-group-wrapper">
+                <Button>Send Message</Button>
+              </Form.Group>
+            </Form>
+          </div>
+          <div className="image-section">
+            <img src="assets/images/contactus.png" alt="contact us" />
+          </div>
         </div>
       </div>
       <div className="info-section">

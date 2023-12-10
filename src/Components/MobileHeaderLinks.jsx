@@ -1,10 +1,6 @@
 import React from "react";
 
 const MobileHeaderLinks = ({toggleMobileBar, height}) => {
-    const navigateToSection = (section) => {
-        window.location.href = section;
-        // toggleMobileBar()
-    }
   return (
     <div id="menu-slider" style={{height: height}}>
       <div className="menu-content">

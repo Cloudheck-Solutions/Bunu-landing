@@ -441,4 +441,96 @@
   .landing-wrapper .blog-section .articles .blog-wrapper img{
     width: 100%;
   }
+
+  .landing-wrapper .info-section .info-section-item .info-item-body{
+    font-size: 10px;
+  }
+
+  .landing-wrapper .info-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .landing-wrapper .app-info .app-info-content-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content:  center;
+    align-items: center;
+  }
+
+  .landing-wrapper .app-info .app-info-content-wrapper .demo-image-wrapper{
+    position: relative;
+    right: 200px;
+  }
+
+  .landing-wrapper .app-info .app-info-content-wrapper .app-info-details .detail-header{
+    font-size: 18px;
+  }
+
+  .landing-wrapper .app-info .app-info-content-wrapper .app-info-details{
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .landing-wrapper .app-info .app-info-content-wrapper .app-info-details .detail-body {
+    font-size: 14px;
+  }
+
+  .landing-wrapper .app-info .app-info-content-wrapper .app-info-details a{
+    font-size: 14px;
+  }
+
+  .landing-wrapper .app-info .app-info-content-wrapper .demo-image-wrapper img{
+    width: 160%;
+  }
+
+  .pre-footer .footer-links .link-wrapper {
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 380px) {
+  .landing-wrapper .contact-section .form-image-wrapper .image-section img{
+    width: 300px;
+  }
+
+  .landing-wrapper .content-section .content-body img{
+    margin-right: 0px;
+    max-width: 300px;
+  }
+
+  .landing-wrapper .content-section .title {
+    font-size: 28px;
+  }
+
+  .pre-footer .footer-links .link-wrapper .title {
+    font-size: 16px;
+  }
+
+  .pre-footer .footer-links .link-wrapper .footer-link {
+    font-size: 12px;
+  }
+
+  .pre-footer .logo-social .footer-logo .footer-logo-image img{
+    height: 40px;
+  }
+
+  .pre-footer .logo-social .footer-logo .footer-logo-text{
+    font-size: 23px;
+  }
+
+  .pre-footer {
+      padding: 30px 20px;
+  }
+  .pre-footer .logo-social .footer-social{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .pre-footer .logo-social .footer-social .footer-social-wrapper{
+    margin-bottom: 17px;
+  }
 }

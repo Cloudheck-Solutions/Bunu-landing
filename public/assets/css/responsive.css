@@ -8,6 +8,10 @@
     height: 40px;
   }
 
+  .landing-wrapper .hero-section .hero-content {
+    padding-left: 50px;
+  }
+
   header .logo .logo-text {
     font-size: 35px;
   }
@@ -250,6 +254,10 @@
     padding: 30px 30px;
   }
 
+  .landing-wrapper .hero-section .hero-content {
+    padding-left: 30px;
+  }
+
   .landing-wrapper .content-section {
     padding: 70px 30px;
   }
@@ -345,7 +353,8 @@
 
 @media (max-width: 770px) {
   .landing-wrapper .hero-section .hero-content .hero-content-title {
-    font-size: 40px;
+    font-size: 50px;
+    line-height: 60px;
   }
 
   .landing-wrapper .hero-section .hero-content .hero-content-sub-title {
@@ -371,5 +380,65 @@
 
   .landing-wrapper .contact-section .form-image-wrapper .form-section .input-group-wrapper button{
     font-size: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  .landing-wrapper .hero-section .hero-content {
+    margin-top: 104px;
+  }
+  .landing-wrapper .hero-section .hero-content .hero-content-title {
+    font-size: 50px;
+    line-height: 50px;
+    margin-bottom: 30px;
+  }
+
+  .landing-wrapper .hero-section .hero-content .hero-content-sub-title {
+    margin-bottom: 50px;
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .pre-footer .footer-links,
+  .landing-wrapper .blog-section .articles{
+    flex-direction: column;
+  }
+
+  .landing-wrapper .content-section .content-body,
+  .landing-wrapper .contact-section .form-image-wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .landing-wrapper .content-section .content-body .content-body-text{
+    padding: 0 10px;
+  }
+
+  .landing-wrapper .content-section .content-body .content-body-text .contentAboutus{
+    margin-right: 0px;
+  }
+
+  .landing-wrapper .content-section .content-btn{
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100vw;
+  }
+
+  .landing-wrapper .content-section .content-btn .btn{
+    margin-right: 0px;
+  }
+
+  .landing-wrapper .blog-section .blog-header{
+    margin-bottom: 20px;
+  }
+
+  .landing-wrapper .blog-section .articles .blog-wrapper,
+  .landing-wrapper .contact-section .contact-header{
+    margin-bottom: 20px;
+  }
+
+  .landing-wrapper .blog-section .articles .blog-wrapper img{
+    width: 100%;
   }
 }

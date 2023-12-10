@@ -9,7 +9,7 @@ const Landing = () => {
   return (
     <div className="landing-wrapper">
       <Header />
-      <div className="hero-section">
+      <div className="hero-section" id="landing">
         <div className="hero-section2">
           <div className="hero-content">
             <div className="hero-content-title">Find Artisans near you</div>
@@ -18,12 +18,12 @@ const Landing = () => {
               needs
             </div>
             <div className="hero-content-download-btn">
-              <Button>Download the app</Button>
+              <Button onClick={() => window.location.href = "#download"}>Download the app</Button>
             </div>
           </div>
         </div>
       </div>
-      <div className="content-section">
+      <div className="content-section" id="about">
         <div className="title">About Us</div>
         <div className="content-body">
           <div className="content-body-text">
@@ -43,7 +43,7 @@ const Landing = () => {
           <img src="assets/images/aboutus.png" alt="img1" />
         </div>
       </div>
-      <div className="content-section">
+      <div className="content-section" id="earn">
         <div className="title">Earn money with Bunu</div>
         <div className="content-btn">
           <Button className="active">Artisan</Button>
@@ -103,7 +103,7 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <div className="blog-section">
+      <div className="blog-section" id="blog">
         <div className="blog-header">Blogs</div>
         <div className="articles">
           <BlogComponent
@@ -123,7 +123,7 @@ const Landing = () => {
           <Button className="blogbtn">View More</Button>
         </div>
       </div>
-      <div className="contact-section">
+      <div className="contact-section" id="contact">
         <div className="contact-header">Contact Us</div>
         <div className="form-image-wrapper">
           <div className="form-section">
@@ -191,8 +191,8 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <div className="app-info">
-        <div className="title">It’s easier with our app</div>
+      <div className="app-info" id="download">
+        <div className="title">It's easier with our app</div>
         <div className="app-info-content-wrapper">
           <div className="app-info-details">
             <div className="detail-header">

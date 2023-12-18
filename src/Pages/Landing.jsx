@@ -146,7 +146,7 @@ const Landing = () => {
             </Form>
           </div>
           <div className="image-section">
-            <img src="assets/images/contactus.png" alt="contact us" />
+            <img src="assets/images/contactUs.png" alt="contact us" />
           </div>
         </div>
       </div>

@@ -1,24 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Components/Header";
 import { Button, Form } from "react-bootstrap";
 import { Icon } from "@iconify/react";
 import Footer from "../Components/Footer";
 import BlogComponent from "../Components/BlogComponent";
+import Textra from "react-textra";
+import ArtisanIntro from "../Components/ArtisanIntro";
+import ClientIntro from "../Components/ClientIntro";
+import OrganizationIntro from "../Components/OrganizationIntro";
+import Map from "../Components/Map";
 
 const Landing = () => {
+  const [introContent, setIntroContent] = useState("artisan");
   return (
     <div className="landing-wrapper">
       <Header />
       <div className="hero-section" id="landing">
         <div className="hero-section2">
           <div className="hero-content">
-            <div className="hero-content-title">Find Artisans near you</div>
-            <div className="hero-content-sub-title">
-              Pick the best artisans in the country to fix your basic household
-              needs
+            <div className="hero-content-title">
+              Elevate Your Experience with the Bunu App
             </div>
+            {/* <div className="hero-content-sub-title">
+              Connecting You with Verified Artisans for Exceptional Services
+              Welcome to Bunu App, your gateway to a world of professionalism
+              and quality service. Discover the ease of finding and hiring
+              verified artisans who deliver top-notch results. Your satisfaction
+              is our priority - experience excellence with the Bunu App.
+            </div> */}
+            <Textra
+              effect="rightLeft"
+              className="hero-content-sub-title"
+              duration={1000}
+              data={[
+                "Connecting You with Verified Artisans for Exceptional Services.",
+                "Welcome to Bunu App, your gateway to a world of professionalism and quality service.",
+                "Discover the ease of finding and hiring verified artisans who deliver top-notch results.",
+                "Your satisfaction is our priority - experience excellence with the Bunu App.",
+              ]}
+            />
             <div className="hero-content-download-btn">
-              <Button onClick={() => window.location.href = "#download"}>Download the app</Button>
+              <Button onClick={() => (window.location.href = "#download")}>
+                Download the app
+              </Button>
             </div>
           </div>
         </div>
@@ -29,11 +53,15 @@ const Landing = () => {
           <div className="content-body-text">
             <div className="contentAboutus">
               <div className="contentAboutUsText">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad veniam, quis nostrud exercitation ullamco laboris nisi
-                ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                repreh
+                Bridging the Gap Between Clients and Skilled Artisans
+              </div>
+              <div className="contentAboutUsSubText">
+                At Bunu App, we believe in connecting clients with skilled
+                artisans seamlessly. Our platform is designed to ensure a
+                transparent and reliable experience, where professionalism meets
+                craftsmanship. We are committed to revolutionizing how clients
+                find and engage with artisans, making quality services
+                accessible to all.
               </div>
               <div className="abt-btn-section">
                 <Button className="abt-btn">READ MORE</Button>
@@ -44,67 +72,49 @@ const Landing = () => {
         </div>
       </div>
       <div className="content-section" id="earn">
-        <div className="title">Earn money with Bunu</div>
+        <div className="title"> Earn money with Bunu </div>
         <div className="content-btn">
-          <Button className="active">Artisan</Button>
-          <Button>Client</Button>
-          <Button>Organization</Button>
+          <Button
+            className={introContent === "artisan" && "active"}
+            onClick={() => setIntroContent("artisan")}
+          >
+            Artisan
+          </Button>
+          <Button
+            className={introContent === "client" && "active"}
+            onClick={() => setIntroContent("client")}
+          >
+            Client
+          </Button>
+          <Button
+            className={introContent === "organization" && "active"}
+            onClick={() => setIntroContent("organization")}
+          >
+            Organization
+          </Button>
         </div>
         <div className="content-body">
-          <img src="assets/images/image1.png" alt="img1" />
-          <div className="content-body-text">
-            <div className="content-body-text-title">
-              Work and earn extra money
-            </div>
-            <div className="content-body-list-wrapper">
-              <div className="content-body-text-list">
-                <div>
-                  <div className="content-body-text-numbering">1</div>
-                </div>
-                <div>
-                  <div className="content-body-text-header">
-                    Work and earn extra income
-                  </div>
-                  <div className="content-body-text-body">
-                    We offer the best chance for artisans to find customers on
-                    our mobile application with over 10+ million users.
-                  </div>
-                </div>
-              </div>
-              <div className="content-body-text-list">
-                <div>
-                  <div className="content-body-text-numbering">2</div>
-                </div>
-                <div>
-                  <div className="content-body-text-header">
-                    Get Paid weekly
-                  </div>
-                  <div className="content-body-text-body">
-                    We offer the best chance for artisans to find customers on
-                    our.
-                  </div>
-                </div>
-              </div>
-              <div className="content-body-text-list">
-                <div>
-                  <div className="content-body-text-numbering">3</div>
-                </div>
-                <div>
-                  <div className="content-body-text-header">
-                    Work and earn extra income
-                  </div>
-                  <div className="content-body-text-body">
-                    We offer the best chance for artisans to find customers on
-                    our mobile application with.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {introContent === "artisan" ? (
+            <ArtisanIntro />
+          ) : introContent === "client" ? (
+            <ClientIntro />
+          ) : introContent === "organization" ? (
+            <OrganizationIntro />
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className="blog-section" id="blog">
         <div className="blog-header">Blogs</div>
+        <div className="blog-sub-header">Stay Informed, Stay Inspired</div>
+        <div className="blog-sub-title">
+          Explore the Bunu App blog for insightful articles, expert tips, and
+          inspiring stories from the world of skilled artisans. Whether you're
+          looking for home improvement ideas or want to learn about the latest
+          trends, our blog is your go-to resource. Join us on a journey of
+          discovery and empowerment.
+        </div>
         <div className="articles">
           <BlogComponent
             image={"assets/images/blog1.png"}
@@ -125,6 +135,14 @@ const Landing = () => {
       </div>
       <div className="contact-section" id="contact">
         <div className="contact-header">Contact Us</div>
+        <div className="contact-title">Get in Touch</div>
+        <div className="contact-subtitle">We're Here to Assist You</div>
+        <div className="contact-desc">
+          Have questions or need assistance? Reach out to our dedicated support
+          team. We value your feedback and are committed to providing the best
+          possible service. Contact us via the form below or connect with us on
+          social media. Your satisfaction is our priority.
+        </div>
         <div className="form-image-wrapper">
           <div className="form-section">
             <Form>
@@ -145,8 +163,11 @@ const Landing = () => {
               </Form.Group>
             </Form>
           </div>
-          <div className="image-section">
+          {/* <div className="image-section">
             <img src="assets/images/contactUs.png" alt="contact us" />
+          </div> */}
+          <div className="map-section">
+            <Map />
           </div>
         </div>
       </div>
@@ -192,15 +213,18 @@ const Landing = () => {
         </div>
       </div>
       <div className="app-info" id="download">
-        <div className="title">It's easier with our app</div>
+        <div className="title">Experience Bunu On the Go</div>
         <div className="app-info-content-wrapper">
           <div className="app-info-details">
             <div className="detail-header">
-              Request for artisans, for <br /> quality work.
+              Your Toolbox of Verified Artisans,
+              <br /> <b>Anytime, Anywhere</b>.
             </div>
             <div className="detail-body">
-              Scan the Qr code with your phone camera to download the Bunu app.
-              Available for Android and IOS devices.
+              Unlock the full potential of the Bunu App by downloading our
+              mobile app. Access a network of verified artisans with just a few
+              taps, ensuring quality services at your fingertips. Leap a
+              hassle-free experience - download the Bunu App now.
             </div>
             <a href="/#">Click here to download</a>
           </div>
@@ -243,6 +267,12 @@ const Landing = () => {
             </a>
             <a href="#/" className="footer-link">
               About Us
+            </a>
+            <a href="#/" className="footer-link">
+              Privacy Policy
+            </a>
+            <a href="#/" className="footer-link">
+            End-user license links
             </a>
           </div>
           <div className="link-wrapper">

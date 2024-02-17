@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 // material-ui
 import {
@@ -26,12 +26,18 @@ import AnimateButton from 'components/@extended/AnimateButton';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { login } from 'services/authenticationService';
+import { isInRole, serviceError } from 'utils/helper';
+import { useDispatch } from 'react-redux';
 
-// ============================|| FIREBASE - LOGIN ||============================ //
+import { currentProfile, currentRoles } from 'store/reducers/user';
+
+// ============================|| LOGIN ||============================ //
 
 const AuthLogin = () => {
   const [checked, setChecked] = React.useState(false);
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -55,11 +61,29 @@ const AuthLogin = () => {
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
-            setStatus({ success: false });
-            setSubmitting(false);
+            setSubmitting(true);
+            const res = await login(values);
+            if (res.status === 200) {
+              const roles = res.data.data?.role;
+              const isAdmin = isInRole(roles, 'ADMIN');
+              if (isAdmin) {
+                localStorage.setItem('token', res.data.data?.token);
+                localStorage.setItem('user', res.data.data?.user);
+                dispatch(currentProfile({ profile: res.data.data?.user }));
+                localStorage.setItem('roles', res.data.data?.role);
+                dispatch(currentRoles({ roles: res.data.data?.role }));
+                setStatus({ success: true });
+                setSubmitting(false);
+                navigate('/admin');
+              } else {
+                setStatus({ success: false });
+                setErrors({ submit: 'Unauthorized access' });
+                setSubmitting(false);
+              }
+            }
           } catch (err) {
             setStatus({ success: false });
-            setErrors({ submit: err.message });
+            setErrors({ submit: serviceError(err) });
             setSubmitting(false);
           }
         }}

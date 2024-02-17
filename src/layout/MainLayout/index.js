@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -14,6 +15,7 @@ import Breadcrumbs from 'components/@extended/Breadcrumbs';
 
 // types
 import { openDrawer } from 'store/reducers/menu';
+import { currentProfile, currentRoles } from 'store/reducers/user';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
@@ -22,7 +24,9 @@ const MainLayout = () => {
   const matchDownLG = useMediaQuery(theme.breakpoints.down('lg'));
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
   const { drawerOpen } = useSelector((state) => state.menu);
+  const { roles, profile } = useSelector((state) => state.user);
 
   // drawer toggler
   const [open, setOpen] = useState(drawerOpen);
@@ -38,6 +42,26 @@ const MainLayout = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [matchDownLG]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const isEmpty = Object.keys(profile).length === 0;
+      const noRoles = roles.length < 1;
+      if (isEmpty) {
+        const user = localStorage.getItem('user');
+        dispatch(currentProfile({ profile: user }));
+      }
+
+      if (noRoles) {
+        const roles = localStorage.getItem('roles');
+        dispatch(currentRoles({ roles: roles }));
+      }
+    } else {
+      navigate('/login');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate]);
 
   useEffect(() => {
     if (open !== drawerOpen) setOpen(drawerOpen);

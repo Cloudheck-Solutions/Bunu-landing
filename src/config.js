@@ -8,7 +8,9 @@ const config = {
   container: true,
   mode: 'light',
   presetColor: 'default',
-  themeDirection: 'ltr'
+  themeDirection: 'ltr',
+  apiUrl:
+    process.env.REACT_APP_ENVIRONMENT && process.env.REACT_APP_ENVIRONMENT !== 'dev' ? 'http://api.bunuapp.com' : 'http://127.0.0.1:8000'
 };
 
 export default config;

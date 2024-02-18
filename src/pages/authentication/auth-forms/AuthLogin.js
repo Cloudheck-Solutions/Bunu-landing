@@ -31,6 +31,7 @@ import { isInRole, serviceError } from 'utils/helper';
 import { useDispatch } from 'react-redux';
 
 import { currentProfile, currentRoles } from 'store/reducers/user';
+import { setShowAlert, setAlertType, setAlertMessage } from 'store/reducers/alert';
 
 // ============================|| LOGIN ||============================ //
 
@@ -74,7 +75,13 @@ const AuthLogin = () => {
                 dispatch(currentRoles({ roles: res.data.data?.role }));
                 setStatus({ success: true });
                 setSubmitting(false);
+                dispatch(setAlertMessage({ alertMessage: 'Login Successful' }));
+                dispatch(setAlertType({ alertType: 'success' }));
+                dispatch(setShowAlert({ showAlert: true }));
                 navigate('/admin');
+                setTimeout(() => {
+                  dispatch(setShowAlert({ showAlert: false }));
+                }, 3000);
               } else {
                 setStatus({ success: false });
                 setErrors({ submit: 'Unauthorized access' });
@@ -161,7 +168,7 @@ const AuthLogin = () => {
                     }
                     label={<Typography variant="h6">Keep me sign in</Typography>}
                   />
-                  <Link variant="h6" component={RouterLink} to="" color="text.primary">
+                  <Link variant="h6" component={RouterLink} to="/forgot-password" color="text.primary">
                     Forgot Password?
                   </Link>
                 </Stack>

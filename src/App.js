@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 
 const App = () => {
   const { showAlert, alertType, alertMessage } = useSelector((state) => state.alert);
+  console.log(process.env.REACT_APP_ENVIRONMENT);
   return (
     <ThemeCustomization>
       <ScrollTop>

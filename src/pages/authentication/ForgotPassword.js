@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 // material-ui
-import { Grid, Stack, Typography } from '@mui/material';
+import { Grid, Stack, Typography, Button } from '@mui/material';
 
 // project import
 import AuthForgotPassword from './auth-forms/AuthForgotPassword';
@@ -9,22 +9,25 @@ import AuthWrapper from './AuthWrapper';
 
 // ================================|| REGISTER ||================================ //
 
-const ForgotPassword = () => (
-  <AuthWrapper>
-    <Grid container spacing={3}>
-      <Grid item xs={12}>
-        <Stack direction="row" justifyContent="space-between" alignItems="baseline" sx={{ mb: { xs: -0.5, sm: 0.5 } }}>
-          <Typography variant="h3">Forgot Password</Typography>
-          <Typography component={Link} to="/login" variant="body1" sx={{ textDecoration: 'none' }} color="primary">
-            Sign In
-          </Typography>
-        </Stack>
+const ForgotPassword = () => {
+  const [resetType, setResetType] = useState('email');
+  return (
+    <AuthWrapper>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Stack direction="row" justifyContent="space-between" alignItems="baseline" sx={{ mb: { xs: -0.5, sm: 0.5 } }}>
+            <Typography variant="h3">Forgot Password</Typography>
+            <Button variant="text" onClick={() => setResetType((prev) => (prev === 'email' ? 'phone' : 'email'))}>
+              Reset with {resetType === 'email' ? 'Phone Number' : 'Email'}
+            </Button>
+          </Stack>
+        </Grid>
+        <Grid item xs={12}>
+          <AuthForgotPassword resetType={resetType} />
+        </Grid>
       </Grid>
-      <Grid item xs={12}>
-        <AuthForgotPassword />
-      </Grid>
-    </Grid>
-  </AuthWrapper>
-);
+    </AuthWrapper>
+  );
+};
 
 export default ForgotPassword;

@@ -1,26 +1,34 @@
 // assets
-import { DashboardOutlined } from '@ant-design/icons';
+import { DashboardOutlined, ChromeOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
-  DashboardOutlined
+  DashboardOutlined,
+  ChromeOutlined
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
 
 const dashboard = {
   id: 'group-dashboard',
-  title: 'Navigation',
+  title: 'Menu',
   type: 'group',
   children: [
     {
       id: 'dashboard',
       title: 'Dashboard',
       type: 'item',
-      url: '/dashboard/default',
+      url: '/admin/dashboard/default',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     }
+    // {
+    //   id: 'sample-page',
+    //   title: 'Sample Page',
+    //   type: 'item',
+    //   url: '/admin/sample-page',
+    //   icon: icons.ChromeOutlined
+    // }
   ]
 };
 

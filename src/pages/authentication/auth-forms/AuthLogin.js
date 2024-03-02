@@ -69,9 +69,9 @@ const AuthLogin = () => {
               const isAdmin = isInRole(roles, 'ADMIN');
               if (isAdmin) {
                 localStorage.setItem('token', res.data.data?.token);
-                localStorage.setItem('user', res.data.data?.user);
+                localStorage.setItem('user', JSON.stringify(res.data.data?.user));
                 dispatch(currentProfile({ profile: res.data.data?.user }));
-                localStorage.setItem('roles', res.data.data?.role);
+                localStorage.setItem('roles', JSON.stringify(res.data.data?.role));
                 dispatch(currentRoles({ roles: res.data.data?.role }));
                 setStatus({ success: true });
                 setSubmitting(false);

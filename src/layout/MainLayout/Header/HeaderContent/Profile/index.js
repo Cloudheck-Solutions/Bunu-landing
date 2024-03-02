@@ -23,11 +23,10 @@ import {
 import MainCard from 'components/MainCard';
 import Transitions from 'components/@extended/Transitions';
 import ProfileTab from './ProfileTab';
-import SettingTab from './SettingTab';
 
 // assets
-import avatar1 from 'assets/images/users/avatar-1.png';
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -55,7 +54,7 @@ function a11yProps(index) {
 
 const Profile = () => {
   const theme = useTheme();
-
+  const { profile, roles } = useSelector((state) => state.user);
   const handleLogout = async () => {
     // logout
   };
@@ -97,8 +96,8 @@ const Profile = () => {
         onClick={handleToggle}
       >
         <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
-          <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-          <Typography variant="subtitle1">John Doe</Typography>
+          <Avatar alt="profile user" src={profile && profile.dpUrl !== null ? profile.dpUrl : ''} sx={{ width: 32, height: 32 }} />
+          <Typography variant="subtitle1">{profile && profile.name}</Typography>
         </Stack>
       </ButtonBase>
       <Popper
@@ -139,11 +138,15 @@ const Profile = () => {
                       <Grid container justifyContent="space-between" alignItems="center">
                         <Grid item>
                           <Stack direction="row" spacing={1.25} alignItems="center">
-                            <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
+                            <Avatar
+                              alt="profile user"
+                              src={profile && profile.dpUrl !== null ? profile.dpUrl : ''}
+                              sx={{ width: 32, height: 32 }}
+                            />
                             <Stack>
-                              <Typography variant="h6">John Doe</Typography>
+                              <Typography variant="h6">{profile && profile.name}</Typography>
                               <Typography variant="body2" color="textSecondary">
-                                UI/UX Designer
+                                {roles.map((obj) => obj.name).join(', ')}
                               </Typography>
                             </Stack>
                           </Stack>
@@ -171,25 +174,10 @@ const Profile = () => {
                               label="Profile"
                               {...a11yProps(0)}
                             />
-                            <Tab
-                              sx={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                textTransform: 'capitalize'
-                              }}
-                              icon={<SettingOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
-                              label="Setting"
-                              {...a11yProps(1)}
-                            />
                           </Tabs>
                         </Box>
                         <TabPanel value={value} index={0} dir={theme.direction}>
                           <ProfileTab handleLogout={handleLogout} />
-                        </TabPanel>
-                        <TabPanel value={value} index={1} dir={theme.direction}>
-                          <SettingTab />
                         </TabPanel>
                       </>
                     )}

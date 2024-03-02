@@ -51,3 +51,7 @@ export const professionNames = (items) => {
 export const capitalizeFirstLetter = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
+
+export const summaryValueCheck = (obj, value) => {
+  return obj !== null ? (value === null ? '0' : value.toLocaleString()) : '0';
+};

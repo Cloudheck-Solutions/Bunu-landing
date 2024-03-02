@@ -7,6 +7,11 @@ import { useTheme } from '@mui/material/styles';
 // third-party
 import ReactApexChart from 'react-apexcharts';
 
+import { setShowAlert, setAlertType, setAlertMessage } from 'store/reducers/alert';
+import { serviceError } from 'utils/helper';
+import { useDispatch } from 'react-redux';
+import { userStats } from 'services/dashboardService';
+
 // chart options
 const areaChartOptions = {
   chart: {
@@ -28,11 +33,11 @@ const areaChartOptions = {
   }
 };
 
-// ==============================|| INCOME AREA CHART ||============================== //
+// ==============================|| USER CHART ||============================== //
 
-const IncomeAreaChart = ({ slot }) => {
+const UserChart = ({ slot }) => {
   const theme = useTheme();
-
+  const dispatch = useDispatch();
   const { primary, secondary } = theme.palette.text;
   const line = theme.palette.divider;
 
@@ -45,7 +50,7 @@ const IncomeAreaChart = ({ slot }) => {
       xaxis: {
         categories:
           slot === 'month'
-            ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            ? Array.from({ length: 31 }, (_, index) => (index + 1).toString())
             : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         labels: {
           style: {
@@ -89,33 +94,46 @@ const IncomeAreaChart = ({ slot }) => {
 
   const [series, setSeries] = useState([
     {
-      name: 'Page Views',
-      data: [0, 86, 28, 115, 48, 210, 136]
+      name: 'Clients',
+      data:
+        slot === 'month'
+          ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          : [0, 0, 0, 0, 0, 0, 0]
     },
     {
-      name: 'Sessions',
-      data: [0, 43, 14, 56, 24, 105, 68]
+      name: 'Artisans',
+      data:
+        slot === 'month'
+          ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          : [0, 0, 0, 0, 0, 0, 0]
     }
   ]);
 
   useEffect(() => {
-    setSeries([
-      {
-        name: 'Page Views',
-        data: slot === 'month' ? [76, 85, 101, 98, 87, 105, 91, 114, 94, 86, 115, 35] : [31, 40, 28, 51, 42, 109, 100]
-      },
-      {
-        name: 'Sessions',
-        data: slot === 'month' ? [110, 60, 150, 35, 60, 36, 26, 45, 65, 52, 53, 41] : [11, 32, 45, 32, 34, 52, 41]
+    const fetchChart = async () => {
+      try {
+        const res = await userStats(slot);
+        if (res.status === 200) {
+          setSeries(res.data.data);
+        }
+      } catch (err) {
+        dispatch(setAlertMessage({ alertMessage: serviceError(err) }));
+        dispatch(setAlertType({ alertType: 'error' }));
+        dispatch(setShowAlert({ showAlert: true }));
+        setTimeout(() => {
+          dispatch(setShowAlert({ showAlert: false }));
+        }, 3000);
       }
-    ]);
+    };
+    fetchChart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slot]);
 
   return <ReactApexChart options={options} series={series} type="area" height={450} />;
 };
 
-IncomeAreaChart.propTypes = {
+UserChart.propTypes = {
   slot: PropTypes.string
 };
 
-export default IncomeAreaChart;
+export default UserChart;

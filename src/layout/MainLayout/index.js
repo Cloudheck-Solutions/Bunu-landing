@@ -16,7 +16,6 @@ import Breadcrumbs from 'components/@extended/Breadcrumbs';
 // types
 import { openDrawer } from 'store/reducers/menu';
 import { currentProfile, currentRoles } from 'store/reducers/user';
-
 // ==============================|| MAIN LAYOUT ||============================== //
 
 const MainLayout = () => {
@@ -46,15 +45,15 @@ const MainLayout = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      const isEmpty = Object.keys(profile).length === 0;
+      const isEmpty = profile === null;
       const noRoles = roles.length < 1;
       if (isEmpty) {
-        const user = localStorage.getItem('user');
+        const user = JSON.parse(localStorage.getItem('user'));
         dispatch(currentProfile({ profile: user }));
       }
 
       if (noRoles) {
-        const roles = localStorage.getItem('roles');
+        const roles = JSON.parse(localStorage.getItem('roles'));
         dispatch(currentRoles({ roles: roles }));
       }
     } else {

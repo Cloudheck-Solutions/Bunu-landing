@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -41,19 +42,13 @@ const barChartOptions = {
   }
 };
 
-// ==============================|| MONTHLY BAR CHART ||============================== //
+// ==============================|| PAYMENT CHART ||============================== //
 
-const MonthlyBarChart = () => {
+const PaymentBarChart = ({ paymentChartData }) => {
   const theme = useTheme();
 
   const { primary, secondary } = theme.palette.text;
   const info = theme.palette.info.light;
-
-  const [series] = useState([
-    {
-      data: [80, 95, 70, 42, 65, 55, 78]
-    }
-  ]);
 
   const [options, setOptions] = useState(barChartOptions);
 
@@ -77,9 +72,13 @@ const MonthlyBarChart = () => {
 
   return (
     <div id="chart">
-      <ReactApexChart options={options} series={series} type="bar" height={365} />
+      <ReactApexChart options={options} series={paymentChartData} type="bar" height={365} />
     </div>
   );
 };
 
-export default MonthlyBarChart;
+PaymentBarChart.propTypes = {
+  paymentChartData: PropTypes.array
+};
+
+export default PaymentBarChart;

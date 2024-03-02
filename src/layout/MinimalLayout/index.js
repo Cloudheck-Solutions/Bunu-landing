@@ -13,9 +13,9 @@ const MinimalLayout = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      const user = localStorage.getItem('user');
+      const user = JSON.parse(localStorage.getItem('user'));
       dispatch(currentProfile({ profile: user }));
-      const roles = localStorage.getItem('roles');
+      const roles = JSON.parse(localStorage.getItem('roles'));
       dispatch(currentRoles({ roles: roles }));
       navigate('/admin');
     }

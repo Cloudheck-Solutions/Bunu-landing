@@ -1,17 +1,16 @@
 // assets
-import { DashboardOutlined, ChromeOutlined } from '@ant-design/icons';
+import { DashboardOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
-  DashboardOutlined,
-  ChromeOutlined
+  DashboardOutlined
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
 
 const dashboard = {
   id: 'group-dashboard',
-  title: 'Menu',
+  title: 'Dashboard',
   type: 'group',
   children: [
     {
@@ -22,13 +21,6 @@ const dashboard = {
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     }
-    // {
-    //   id: 'sample-page',
-    //   title: 'Sample Page',
-    //   type: 'item',
-    //   url: '/admin/sample-page',
-    //   icon: icons.ChromeOutlined
-    // }
   ]
 };
 

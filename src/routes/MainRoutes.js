@@ -7,6 +7,8 @@ import MainLayout from 'layout/MainLayout';
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 
+const PaymentTransactions = Loadable(lazy(() => import('pages/payment-transactions')));
+
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
 
@@ -25,6 +27,10 @@ const MainRoutes = {
     {
       path: '',
       element: <DashboardDefault />
+    },
+    {
+      path: 'payment-transactions',
+      element: <PaymentTransactions />
     },
     {
       path: 'color',

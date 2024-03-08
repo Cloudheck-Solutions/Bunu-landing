@@ -21,6 +21,7 @@ import { setShowAlert, setAlertType, setAlertMessage } from 'store/reducers/aler
 import { useDispatch } from 'react-redux';
 import { transactions } from 'services/paymentService';
 import dayjs from 'dayjs';
+import PageLoader from 'components/PageLoader';
 
 // ==============================|| Payment Transaction ||============================== //
 
@@ -183,6 +184,8 @@ const PaymentTransactions = () => {
   const [order] = useState('asc');
   const [orderBy] = useState('date');
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
   const [perPage, setPerPage] = useState(10);
@@ -196,7 +199,9 @@ const PaymentTransactions = () => {
     setStartDate(value[0]);
     setEndDate(value[1]);
   };
+
   const fetchPayments = async (sd = startDate, ed = endDate, pg = page, ppg = perPage, q = query) => {
+    setIsLoading(true);
     try {
       const res = await transactions(sd.format('YYYY-MM-DD'), ed.format('YYYY-MM-DD'), pg, ppg, q);
       if (res.status === 200) {
@@ -213,6 +218,7 @@ const PaymentTransactions = () => {
         dispatch(setShowAlert({ showAlert: false }));
       }, 3000);
     }
+    setIsLoading(false);
   };
 
   const handleChangePage = (event, newPage) => {
@@ -229,6 +235,7 @@ const PaymentTransactions = () => {
     fetchPayments();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate, endDate, query]);
+
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       <Grid item xs={12} md={12} lg={12}>
@@ -255,11 +262,15 @@ const PaymentTransactions = () => {
           <Grid item />
         </Grid>
       </Grid>
-
-      <CustomTable TableHead={PaymentTableHead} order={order} orderBy={orderBy}>
-        <PaymentTableRow payments={payments} />
-      </CustomTable>
-
+      {isLoading ? (
+        <Grid item xs={12} md={12} lg={12}>
+          <PageLoader />
+        </Grid>
+      ) : (
+        <CustomTable TableHead={PaymentTableHead} order={order} orderBy={orderBy}>
+          <PaymentTableRow payments={payments} />
+        </CustomTable>
+      )}
       <Grid item xs={12} md={12} lg={12}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item xs={12} md={12} lg={6} sx={{ mb: 2 }}>

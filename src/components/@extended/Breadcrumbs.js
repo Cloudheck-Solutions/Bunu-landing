@@ -42,11 +42,6 @@ const Breadcrumbs = ({ navigation, title, ...others }) => {
     });
   });
 
-  // only used for component demo breadcrumbs
-  if (location.pathname === '/breadcrumbs') {
-    location.pathname = '/dashboard/analytics';
-  }
-
   let mainContent;
   let itemContent;
   let breadcrumbContent = <Typography />;
@@ -77,7 +72,13 @@ const Breadcrumbs = ({ navigation, title, ...others }) => {
           <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start" spacing={1}>
             <Grid item>
               <MuiBreadcrumbs aria-label="breadcrumb">
-                <Typography component={Link} to="/" color="textSecondary" variant="h6" sx={{ textDecoration: 'none' }}>
+                <Typography
+                  component={Link}
+                  to="/admin/dashboard/default"
+                  color="textSecondary"
+                  variant="h6"
+                  sx={{ textDecoration: 'none' }}
+                >
                   Home
                 </Typography>
                 {mainContent}

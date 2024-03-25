@@ -123,7 +123,7 @@ const CustomTableStatus = ({ status }) => {
 };
 
 CustomTableStatus.propTypes = {
-  status: PropTypes.number
+  status: PropTypes.string
 };
 
 function PaymentTableRow({ payments, order, orderBy }) {
@@ -186,7 +186,7 @@ const PaymentTransactions = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [count, setCount] = useState(0);
   const [perPage, setPerPage] = useState(10);
   const [query, setQuery] = useState('');
@@ -268,7 +268,7 @@ const PaymentTransactions = () => {
         </Grid>
       ) : (
         <CustomTable TableHead={PaymentTableHead} order={order} orderBy={orderBy}>
-          <PaymentTableRow payments={payments} />
+          <PaymentTableRow payments={payments} order={order} orderBy={orderBy} />
         </CustomTable>
       )}
       <Grid item xs={12} md={12} lg={12}>

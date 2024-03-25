@@ -14,7 +14,7 @@ import { serviceError } from 'utils/helper';
 
 const PaymentConfigurations = () => {
   const [paymentAmount, setPaymentAmount] = useState('');
-  const [paymentChannel, setPaymentChannel] = useState(['']);
+  const [paymentChannel, setPaymentChannel] = useState([]);
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);

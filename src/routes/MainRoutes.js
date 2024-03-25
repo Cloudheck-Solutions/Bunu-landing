@@ -10,14 +10,12 @@ const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 const PaymentTransactions = Loadable(lazy(() => import('pages/payment-transactions')));
 const PaymentConfigurations = Loadable(lazy(() => import('pages/payment-configuration')));
 
-// render - sample page
-const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
-
-// render - utilities
-const Typography = Loadable(lazy(() => import('pages/components-overview/Typography')));
-const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
-const Shadow = Loadable(lazy(() => import('pages/components-overview/Shadow')));
-const AntIcons = Loadable(lazy(() => import('pages/components-overview/AntIcons')));
+const Users = Loadable(lazy(() => import('pages/users')));
+const User = Loadable(lazy(() => import('pages/user-detail')));
+const AdminUsers = Loadable(lazy(() => import('pages/admin-users')));
+const Skills = Loadable(lazy(() => import('pages/skills')));
+const Notifications = Loadable(lazy(() => import('pages/notifications')));
+const Chats = Loadable(lazy(() => import('pages/chats')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -38,8 +36,28 @@ const MainRoutes = {
       element: <PaymentConfigurations />
     },
     {
-      path: 'color',
-      element: <Color />
+      path: 'users',
+      element: <Users />
+    },
+    {
+      path: 'user/:id',
+      element: <User />
+    },
+    {
+      path: 'admin-users',
+      element: <AdminUsers />
+    },
+    {
+      path: 'services',
+      element: <Skills />
+    },
+    {
+      path: 'notifications',
+      element: <Notifications />
+    },
+    {
+      path: 'chats',
+      element: <Chats />
     },
     {
       path: 'dashboard',
@@ -49,22 +67,6 @@ const MainRoutes = {
           element: <DashboardDefault />
         }
       ]
-    },
-    {
-      path: 'sample-page',
-      element: <SamplePage />
-    },
-    {
-      path: 'shadow',
-      element: <Shadow />
-    },
-    {
-      path: 'typography',
-      element: <Typography />
-    },
-    {
-      path: 'icons/ant',
-      element: <AntIcons />
     }
   ]
 };

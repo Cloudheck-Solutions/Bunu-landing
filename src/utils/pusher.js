@@ -3,7 +3,7 @@ import config from 'config';
 
 const token = localStorage.getItem('token');
 
-// Pusher.logToConsole = true;
+Pusher.logToConsole = true;
 
 const pusher = new Pusher(config.pusherApiKey, {
   cluster: config.pusherCluster,

@@ -25,6 +25,7 @@ import { closeSupportChat, getConnectionMessages, getSupportMessages, sendSuppor
 import PageLoader from 'components/PageLoader';
 import { dateConverter2, serviceError } from 'utils/helper';
 import { useSelector } from 'react-redux';
+import pusher from 'utils/pusher';
 
 // ==============================|| Chat PAGE ||============================== //
 
@@ -56,7 +57,46 @@ const Chats = () => {
   const [selectedConnectionChatId, setSelectedConnectionChatId] = useState(0);
   const [selectedConnectionChatMessages, setSelectedConnectionChatMessages] = useState([]);
 
-  // const [connectionChat, setConnectionChat] = useState([]);
+  useEffect(() => {
+    if (tabValue === 0) {
+      try {
+        const supportChatChannel = pusher.subscribe(`private-support.${selectedSupportChatId}`);
+        supportChatChannel.bind('App\\Events\\SupportMessageNotification', (data) => {
+          if (data.message.isAdmin === false) {
+            const supportChatState = [...supportChat];
+            const index = supportChatState.findIndex((item) => item.id === selectedSupportChatId);
+
+            supportChatState[index].messages.push(data.message);
+            setSupportChat(supportChatState);
+            setSupportChatToDisplay(supportChatState);
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tabValue, selectedSupportChatId]);
+
+  useEffect(() => {
+    if (tabValue === 1) {
+      try {
+        const connectionChatChannel = pusher.subscribe(`private-chat.${selectedConnectionChatId}`);
+        connectionChatChannel.bind('App\\Events\\NewChatMessage', (data) => {
+          if (data.message.isAdmin === false) {
+            const connectionChatState = [...selectedConnectionChatMessages];
+            connectionChatState.push(data.message);
+            setSelectedConnectionChatMessages(connectionChatState);
+
+            setConnectionChatMessages([...connectionChatMessages, data.message]);
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tabValue, selectedConnectionChatId]);
 
   const filterChats = (chatList, query) => {
     return chatList.filter((chat) => {
@@ -227,12 +267,12 @@ const Chats = () => {
         supportChatState[index].messages.push(pendingSupportMessage);
         setSupportChat(supportChatState);
         setSupportChatToDisplay(supportChatState);
-        setMessage('');
       } else {
         connectionChatState = [...selectedConnectionChatMessages];
         connectionChatState.push(pendingSupportMessage);
         setSelectedConnectionChatMessages(connectionChatState);
       }
+      setMessage('');
 
       const result = await sendSupportMessage(payload);
       if (result.status === 200) {
@@ -241,6 +281,7 @@ const Chats = () => {
         dispatch(setShowAlert({ showAlert: true }));
 
         if (isSupportMessage) {
+          const index = supportChatState.findIndex((item) => item.id === selectedSupportChatId);
           const objectIndex = supportChatState[index].messages.findIndex((item) => item.id === randomId);
 
           if (objectIndex !== -1) {
@@ -249,8 +290,6 @@ const Chats = () => {
             setSupportChatToDisplay(supportChatState);
           }
         } else {
-          console.log(connectionChatState);
-
           const objectIndex = connectionChatState.findIndex((item) => item.id === randomId);
           if (objectIndex !== -1) {
             selectedConnectionChatMessages[objectIndex] = result.data.data;

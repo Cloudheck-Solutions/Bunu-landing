@@ -16,6 +16,7 @@ const AdminUsers = Loadable(lazy(() => import('pages/admin-users')));
 const Skills = Loadable(lazy(() => import('pages/skills')));
 const Notifications = Loadable(lazy(() => import('pages/notifications')));
 const Chats = Loadable(lazy(() => import('pages/chats')));
+const Profile = Loadable(lazy(() => import('pages/profile')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -58,6 +59,10 @@ const MainRoutes = {
     {
       path: 'chats',
       element: <Chats />
+    },
+    {
+      path: 'profile',
+      element: <Profile />
     },
     {
       path: 'dashboard',

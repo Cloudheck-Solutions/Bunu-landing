@@ -106,7 +106,6 @@ const AdminUsers = () => {
     setAPerPage(parseInt(event.target.value, 10));
     fetchAdmin(aPage, event.target.value);
   };
-  console.log(adminUser, organizationAdminUser);
   return (
     <MainCard title="Admin Users">
       <Box sx={{ width: '100%' }}>

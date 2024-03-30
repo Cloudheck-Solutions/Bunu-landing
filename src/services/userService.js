@@ -31,3 +31,13 @@ export const userVerification = (payload) => {
 export const usersSummary = () => {
   return http.get('/Users/Summary/All');
 };
+
+export const updateUser = (id, payload) => {
+  return http.put(`/User/Profile/Update/${id}`, payload);
+};
+
+export const updateUserDp = (id, payload) => {
+  return http.post(`/User/Profile/UpdateDP/${id}`, payload, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+};

@@ -26,7 +26,11 @@ import ProfileTab from './ProfileTab';
 
 // assets
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setShowAlert, setAlertType, setAlertMessage } from 'store/reducers/alert';
+import { serviceError } from 'utils/helper';
+import { logout } from 'services/authenticationService';
+import { useNavigate } from 'react-router-dom';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -54,13 +58,45 @@ function a11yProps(index) {
 
 const Profile = () => {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { profile, roles } = useSelector((state) => state.user);
+
   const handleLogout = async () => {
-    // logout
+    setIsLoginOut(true);
+    try {
+      const res = await logout();
+      if (res.status === 200) {
+        localStorage.clear();
+        setIsLoginOut(false);
+        dispatch(setAlertMessage({ alertMessage: 'Logout Successful' }));
+        dispatch(setAlertType({ alertType: 'success' }));
+        dispatch(setShowAlert({ showAlert: true }));
+        navigate('/login');
+        setTimeout(() => {
+          dispatch(setShowAlert({ showAlert: false }));
+        }, 3000);
+      }
+    } catch (err) {
+      dispatch(setAlertMessage({ alertMessage: serviceError(err) }));
+      dispatch(setAlertType({ alertType: 'error' }));
+      dispatch(setShowAlert({ showAlert: true }));
+      setTimeout(() => {
+        dispatch(setShowAlert({ showAlert: false }));
+      }, 3000);
+    }
+    setIsLoginOut(false);
+  };
+
+  const handleViewProfile = () => {
+    navigate('/admin/profile');
   };
 
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [isLoginOut, setIsLoginOut] = useState(false);
+
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -152,7 +188,7 @@ const Profile = () => {
                           </Stack>
                         </Grid>
                         <Grid item>
-                          <IconButton size="large" color="secondary" onClick={handleLogout}>
+                          <IconButton size="large" color="secondary" onClick={handleLogout} disabled={isLoginOut}>
                             <LogoutOutlined />
                           </IconButton>
                         </Grid>
@@ -177,7 +213,7 @@ const Profile = () => {
                           </Tabs>
                         </Box>
                         <TabPanel value={value} index={0} dir={theme.direction}>
-                          <ProfileTab handleLogout={handleLogout} />
+                          <ProfileTab handleLogout={handleLogout} handleViewProfile={handleViewProfile} disabled={isLoginOut} />
                         </TabPanel>
                       </>
                     )}

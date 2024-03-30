@@ -10,7 +10,10 @@ const config = {
   presetColor: 'default',
   themeDirection: 'ltr',
   apiUrl:
-    process.env.REACT_APP_ENVIRONMENT && process.env.REACT_APP_ENVIRONMENT !== 'dev' ? 'http://api.bunuapp.com' : 'http://127.0.0.1:8000'
+    process.env.REACT_APP_ENVIRONMENT && process.env.REACT_APP_ENVIRONMENT !== 'dev' ? 'http://api.bunuapp.com' : 'http://127.0.0.1:8000',
+  pusherApiKey: '52e38a6290a9e7ef4246',
+  pusherCluster: 'mt1',
+  pusherAuthEndpoint: '/broadcasting/auth'
 };
 
 export default config;

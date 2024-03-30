@@ -33,7 +33,6 @@ const AuthForgotPassword = ({ resetType }) => {
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
             setSubmitting(true);
-            console.log(values);
             const payload = {
               medium: resetType === 'email' ? values.email : values.phone,
               type: resetType

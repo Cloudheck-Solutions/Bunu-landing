@@ -11,3 +11,7 @@ export const forgotPassword = (payload) => {
 export const resetPassword = (payload) => {
   return http.post('/Auth/Reset-Password', payload);
 };
+
+export const logout = () => {
+  return http.get('/Auth/Logout');
+};

@@ -21,15 +21,4 @@ const interceptor = (conf) => {
   }
 };
 
-export const http2 = axios.create({
-  baseURL: config.apiUrl,
-  timeout: 100000,
-  headers: {
-    Accept: 'application/json',
-    'Access-Control-Allow-Origin': '*'
-  }
-});
-
 http.interceptors.request.use((conf) => interceptor(conf));
-
-http2.interceptors.request.use((conf) => interceptor(conf));

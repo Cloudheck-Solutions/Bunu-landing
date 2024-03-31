@@ -376,11 +376,11 @@ const Chats = () => {
                       <Grid container>
                         <Grid item xs={12}>
                           <ListItemText
-                            align={msg.isAdmin === 0 ? 'left' : 'right'}
+                            align={!msg.isAdmin ? 'left' : 'right'}
                             primary={msg.body}
                             sx={{
-                              backgroundColor: msg.isAdmin === 0 ? theme.palette.secondary.main : theme.palette.primary.main,
-                              color: msg.isAdmin === 0 ? theme.palette.secondary.contrastText : theme.palette.primary.contrastText,
+                              backgroundColor: !msg.isAdmin ? theme.palette.secondary.main : theme.palette.primary.main,
+                              color: !msg.isAdmin ? theme.palette.secondary.contrastText : theme.palette.primary.contrastText,
                               borderRadius: '16px',
                               marginBottom: '8px',
                               padding: '8px 16px'
@@ -464,11 +464,11 @@ const Chats = () => {
                       <Grid container>
                         <Grid item xs={12}>
                           <ListItemText
-                            align={msg.isAdmin === 0 ? 'left' : 'right'}
+                            align={!msg.isAdmin ? 'left' : 'right'}
                             primary={msg.body}
                             sx={{
-                              backgroundColor: msg.isAdmin === 0 ? theme.palette.secondary.main : theme.palette.primary.main,
-                              color: msg.isAdmin === 0 ? theme.palette.secondary.contrastText : theme.palette.primary.contrastText,
+                              backgroundColor: !msg.isAdmin ? theme.palette.secondary.main : theme.palette.primary.main,
+                              color: !msg.isAdmin ? theme.palette.secondary.contrastText : theme.palette.primary.contrastText,
                               borderRadius: '16px',
                               marginBottom: '8px',
                               padding: '8px 16px'
